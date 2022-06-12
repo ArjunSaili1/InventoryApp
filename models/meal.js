@@ -20,4 +20,4 @@ mealSchema
       //To be implemented
   }) */
   
-module.export = mongoose.model('Meal', mealSchema); 
+module.exports = mongoose.model("Meal", mealSchema); 
