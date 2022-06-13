@@ -6,7 +6,8 @@ const mealSchema = new mongoose.Schema({
     description: {type: String},
     cuisine: {type: mongoose.SchemaTypes.ObjectId, ref: "Cuisine" ,required: true},
     ingredients: {type: [mongoose.SchemaTypes.ObjectId], ref:"Ingredient", required: true},
-    price: {type: Number, required: true}
+    price: {type: Number, required: true},
+    image: {type: String}
 })
 
 mealSchema

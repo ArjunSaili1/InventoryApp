@@ -32,20 +32,21 @@ function cuisineCreate(name, description, cb) {
   if (description != false) cuisinedetail.description = description
   
   var cuisine = new Cuisine(cuisinedetail);
-       
+  cuisine.image = `/images/cuisine/${cuisine._id}.jpeg`
   cuisine.save(function (err) {
     if (err) {
       cb(err, null)
       return
     }
-    console.log('New Cuisine: ' + cuisine);
-    cuisines.push(cuisine)
-    cb(null, cuisine)
-  }  );
+  });
+  console.log('New Cuisine: ' + cuisine);
+  cuisines.push(cuisine)
+  cb(null, cuisine)
 }
 
 function ingredientCreate(name, in_stock, cb) {
   var ingredient = new Ingredient({ name: name, in_stock: in_stock });
+  ingredient.image = `/images/ingredient/${ingredient._id}.jpeg`;
   ingredient.save(function (err) {
     if (err) {
       cb(err, null);
@@ -60,6 +61,7 @@ function ingredientCreate(name, in_stock, cb) {
 function mealCreate(name, description, cuisine, ingredients, price, cb) {
   var meal = new Meal({name: name, cuisine: cuisine, price: price, ingredients: ingredients});   
   if (description != false) meal.description = description
+  meal.image = `/images/meal/${meal._id}.jpeg`
   meal.save(function (err) {
     if (err) {
       cb(err, null)
