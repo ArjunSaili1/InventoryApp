@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-console.log('This script populates some test cuisines, ingredients, and meals to the database. Specified database as argument - e.g.: populatedb mongodb+srv://cooluser:coolpassword@cluster0.a9azn.mongodb.net/local_library?retryWrites=true');
+console.log('This script populates some test cuisines, ingredients, and meals to the database.');
 
 // Get arguments passed on command line
 var userArgs = process.argv.slice(2);
@@ -40,7 +40,6 @@ function cuisineCreate(name, description, cb) {
     }
     console.log('New Cuisine: ' + cuisine);
     cuisines.push(cuisine)
-    console.log(cuisines)
     cb(null, cuisine)
   }  );
 }
@@ -88,7 +87,7 @@ function createIngredientsCuisines(cb) {
           ingredientCreate('Oil', true, callback);
         },
         function(callback) {
-          ingredientCreate('Feta', true, callback);
+          ingredientCreate('Feta', false, callback);
         },
         function(callback) {
           ingredientCreate('Thyme', true, callback);
@@ -166,13 +165,13 @@ function createIngredientsCuisines(cb) {
 
 
 function createMeals(cb) {
-  console.log("From create meal:", cuisines[2])
+    console.log("From create meal:", cuisines[2])
     async.parallel([
         function(callback) {
           mealCreate("Baked Feta Pasta", "A quick but elegant meal that packs loads of flavour. Made with Feta imported from Greece, Tomatoes from Italy and Home-grown Organic Onions.", cuisines[2], [ingredients[0], ingredients[1], ingredients[2], ingredients[3], ingredients[4], ingredients[5], ingredients[6], ingredients[7], ingredients[20]], 15.99, callback)
         },
         function(callback) {
-          mealCreate("Chicken & Veggie Stir-Fry", "Satisfy your cravings for chinese cuisine with this healthy meal of protein and veggies. But just because its good for you, doesn't mean it isn't delicious!", cuisines[0], [ingredients[8], ingredients[9], ingredients[10], ingredients[11], ingredients[12], ingredients[13], ingredients[14], ingredients[20], ingredients[4]], 12.99, callback)
+          mealCreate("Chicken & Veggie Stir-Fry", "Satisfy your cravings for chinese cuisine with this healthy meal of protein and veggies. But just because its good for you, doesn't mean it isn't delicious!", cuisines[0], [ingredients[8], ingredients[9], ingredients[10], ingredients[11], ingredients[12], ingredients[13], ingredients[14], ingredients[20], ingredients[3]], 12.99, callback)
         },
         function(callback) {
           mealCreate("Easy Chicken Alfredo Penne", "A steaming bowl of creamy pasta will surely hit the spot! Our rich alfredo sauce will coat your mouth with happiness!", cuisines[1], [ingredients[6], ingredients[7], ingredients[8], ingredients[20], ingredients[2], ingredients[3], ingredients[19], ingredients[18], ingredients[17], ingredients[16], ingredients[15], ingredients[13]], 19.99, callback)

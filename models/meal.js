@@ -1,4 +1,5 @@
 var mongoose = require('mongoose')
+var Ingredient = require('./ingredient')
 
 const mealSchema = new mongoose.Schema({
     name: {type: String, required: true, minlength: 1},
@@ -17,7 +18,16 @@ mealSchema
 /* mealSchema
   .virtual('in_stock')
   .get(function(){
-      //To be implemented
+      Ingredient.find({_id: {$in: this.ingredients}}).exec(function(err, results){
+          if(err){throw new Error('Error getting ingreidents')}
+          for(let i=0; i < results.length; i++){
+              console.log(results[i]["in_stock"])
+              if(results[i]["in_stock"] === false){
+                  return false
+              }
+          }
+          return true
+      })
   }) */
   
 module.exports = mongoose.model("Meal", mealSchema); 

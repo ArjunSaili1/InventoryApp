@@ -5,7 +5,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var mealRouter = require('./routes/mealRouter');
+var cuisineRouter = require('./routes/cuisineRouter');
+var ingredientRouter = require('./routes/ingredientRouter')
 var app = express();
 
 //Set up mongoose connection
@@ -26,7 +28,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/meal', mealRouter);
+app.use('/cuisine', cuisineRouter);
+app.use('/ingredient', ingredientRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
