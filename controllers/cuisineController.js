@@ -9,7 +9,7 @@ module.exports.cuisine_detail = function(req, res, next){
     Cuisine.findById(req.params.id).exec(function(err, thisCuisine){
         if(err){return next(err)}
         console.log(thisCuisine)
-        res.render("test", {cuisine: thisCuisine})
+        res.render("test", {cuisine: thisCuisine, title: "Cuisines"})
     })
 }
 
