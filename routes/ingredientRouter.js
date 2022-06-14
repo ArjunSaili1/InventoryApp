@@ -1,24 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const ingredient_controller = require('../controllers/ingredientController')
 
-router.get('/', function(req, res, next){
-    res.send("Not Implemented Yet")
-})
+router.get('/', ingredient_controller.ingredient_list)
 
-router.get('/create', function(req, res, next){
-    res.send("Not Implemented Yet: Create Ingredient")
-})
+router.get('/create', ingredient_controller.ingredient_create_get)
 
-router.get('/:id/update', function(req, res, next){
-    res.send("Not Implemented Yet: Update ingredient ID:" + JSON.stringify(req.params.id))
-})
+router.post('/create', ingredient_controller.ingredient_create_post)
 
-router.get('/:id/delete', function(req, res, next){
-    res.send("Not Implemented Yet: Delete ingredient ID:" + JSON.stringify(req.params.id))
-})
+router.get('/:id/update', ingredient_controller.ingredient_update_get)
 
-router.get('/:id', function(req, res, next){
-    res.send("Not Implemented Yet: ingredient ID:" + JSON.stringify(req.params.id))
-})
+router.post('/:id/update', ingredient_controller.ingredient_update_post)
+
+router.get('/:id/delete', ingredient_controller.ingredient_delete_get)
+
+router.post('/:id/delete', ingredient_controller.ingredient_delete_post)
+
+router.get('/:id', ingredient_controller.ingredient_detail)
 
 module.exports = router;

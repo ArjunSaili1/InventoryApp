@@ -1,29 +1,21 @@
-var express = require('express');
-var router = express.Router();
-var Cuisine = require('../models/cuisine')
+const express = require('express');
+const router = express.Router();
+const cuisine_controller = require('../controllers/cuisineController')
 
-router.get('/', function(req, res, next){
-    res.send("Not Implemented Yet")
-})
+router.get('/', cuisine_controller.cuisine_list)
 
-router.get('/create', function(req, res, next){
-    res.send("Not Implemented Yet: Create Cuisine")
-})
+router.get('/create', cuisine_controller.cuisine_create_get)
 
-router.get('/:id/update', function(req, res, next){
-    res.send("Not Implemented Yet: Update Cuisine ID:" + JSON.stringify(req.params.id))
-})
+router.post('/create', cuisine_controller.cuisine_create_post)
 
-router.get('/:id/delete', function(req, res, next){
-    res.send("Not Implemented Yet: Delete Cuisine ID:" + JSON.stringify(req.params.id))
-})
+router.get('/:id/update', cuisine_controller.cuisine_update_get)
 
-router.get('/:id', function(req, res, next){
-    Cuisine.findById(req.params.id).exec(function(err, thisCuisine){
-        if(err){return next(err)}
-        console.log(thisCuisine)
-        res.render("test", {cuisine: thisCuisine})
-    })
-})
+router.post('/:id/update', cuisine_controller.cuisine_update_post)
+
+router.get('/:id/delete', cuisine_controller.cuisine_delete_get)
+
+router.get('/:id/delete', cuisine_controller.cuisine_delete_post)
+
+router.get('/:id', cuisine_controller.cuisine_detail)
 
 module.exports = router;

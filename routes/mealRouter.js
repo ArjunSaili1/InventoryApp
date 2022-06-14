@@ -1,25 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const meal_controller = require('../controllers/mealController')
 
-router.get('/', function(req, res, next){
-    res.send("Not Implemented Yet")
-})
+router.get('/', meal_controller.meal_list)
 
-router.get('/create', function(req, res, next){
-    res.send("Not Implemented Yet: Create Meal")
-})
+router.get('/create', meal_controller.meal_create_get)
 
-router.get('/:id/update', function(req, res, next){
-    res.send("Not Implemented Yet: Update meal ID:" + JSON.stringify(req.params.id))
-})
+router.post('/create', meal_controller.meal_create_post)
 
-router.get('/:id/delete', function(req, res, next){
-    res.send("Not Implemented Yet: Delete meal ID:" + JSON.stringify(req.params.id))
-})
+router.get('/:id/update', meal_controller.meal_update_get)
 
-router.get('/:id', function(req, res, next){
-    res.send("Not Implemented Yet: meal ID:" + JSON.stringify(req.params.id))
-})
+router.post('/:id/update', meal_controller.meal_update_post)
 
+router.get('/:id/delete', meal_controller.meal_delete_get)
+
+router.post('/:id/delete', meal_controller.meal_delete_post)
+
+router.get('/:id', meal_controller.meal_detail)
 
 module.exports = router;
