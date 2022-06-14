@@ -9,7 +9,7 @@ const cuisineSchema = new mongoose.Schema({
 cuisineSchema
 .virtual('url')
 .get(function(){
-    return 'cuisine/' + this._id
+    return '/cuisine/' + this._id
 })
 
 module.exports = mongoose.model("Cuisine", cuisineSchema)

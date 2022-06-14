@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= cuisine.name %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+      </head>
+    <body>
+        <%- include('partials/header') %> 
+        <div class="cuisine-content-wrapper">
+            <div class='cuisine-content'>
+                <h2><%= cuisine.name.charAt(0).toUpperCase() + cuisine.name.slice(1) %> Cuisine</h2>
+                <h5><em><%= cuisine.description %> </em></h5>
+                <img class='cuisine-image' src=<%=cuisine.image%> alt=""/>
+                <div class='cuisine-meals'> 
+                    <h3>Meals</h3>
+                    <ul>
+                        <% cuisineMeals.forEach((meal)=>{ %> 
+                            <li><a href=<%= meal.url %> ><%= meal.name %></a></li>
+                        <% }) %> 
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/footer') %> 
+    </body>
+</html>

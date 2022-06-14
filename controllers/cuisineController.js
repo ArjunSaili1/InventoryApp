@@ -1,16 +1,21 @@
 const Cuisine = require('../models/cuisine')
 const Meal = require('../models/meal')
+const async = require('async')
+const { name } = require('ejs')
 
 module.exports.cuisine_list = function(req, res, next){
     res.send("Not Implemented Yet Cuisine List")
 }
 
-module.exports.cuisine_detail = function(req, res, next){
-    Cuisine.findById(req.params.id).exec(function(err, thisCuisine){
-        if(err){return next(err)}
-        console.log(thisCuisine)
-        res.render("test", {cuisine: thisCuisine, title: "Cuisines"})
-    })
+module.exports.cuisine_detail = async function(req, res, next){
+    try{
+        const cuisine = await Cuisine.findById(req.params.id).exec();
+        const cuisineMeals = await Meal.find({cuisine: cuisine._id}).exec()
+        console.log(cuisineMeals)
+        res.render('cuisine_detail', {cuisine: cuisine, cuisineMeals: cuisineMeals})
+    }catch(err){
+        return next(err)
+    }
 }
 
 module.exports.cuisine_create_get = function(req, res, next){

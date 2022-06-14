@@ -13,7 +13,7 @@ const mealSchema = new mongoose.Schema({
 mealSchema
 .virtual('url')
 .get(function(){
-    return 'meal/' + this._id
+    return '/meal/' + this._id
 })
 
 /* mealSchema
