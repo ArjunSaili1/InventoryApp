@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-
 console.log('This script populates some test cuisines, ingredients, and meals to the database.');
 
 // Get arguments passed on command line
@@ -10,6 +9,7 @@ if (!userArgs[0].startsWith('mongodb')) {
     return
 }
 */
+require('dotenv').config()
 var async = require('async')
 var Cuisine = require('./models/cuisine')
 var Ingredient = require('./models/ingredient')
@@ -32,7 +32,7 @@ function cuisineCreate(name, description, cb) {
   if (description != false) cuisinedetail.description = description
   
   var cuisine = new Cuisine(cuisinedetail);
-  cuisine.image = `/images/cuisine/${cuisine._id}.jpeg`
+  cuisine.image = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${cuisine._id}.jpeg`
   cuisine.save(function (err) {
     if (err) {
       cb(err, null)
@@ -46,7 +46,7 @@ function cuisineCreate(name, description, cb) {
 
 function ingredientCreate(name, in_stock, cb) {
   var ingredient = new Ingredient({ name: name, in_stock: in_stock });
-  ingredient.image = `/images/ingredient/${ingredient._id}.jpeg`;
+  ingredient.image = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${ingredient._id}.jpeg`
   ingredient.save(function (err) {
     if (err) {
       cb(err, null);
@@ -61,7 +61,7 @@ function ingredientCreate(name, in_stock, cb) {
 function mealCreate(name, description, cuisine, ingredients, price, cb) {
   var meal = new Meal({name: name, cuisine: cuisine, price: price, ingredients: ingredients});   
   if (description != false) meal.description = description
-  meal.image = `/images/meal/${meal._id}.jpeg`
+  meal.image = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload/${meal._id}.jpeg`
   meal.save(function (err) {
     if (err) {
       cb(err, null)
