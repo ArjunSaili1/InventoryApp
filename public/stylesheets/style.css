@@ -115,6 +115,7 @@ footer h6{
   align-items: center;
   justify-content: center;
   height: 80vh;
+  margin: 3% 0;
 }
 
 .cuisine-content{
@@ -157,16 +158,17 @@ footer h6{
 
 .card h3{
   padding: 3%;
+  text-align: center;
   font-size: 1.5rem;
 }
 
-.cuisine-grid-title{
+.grid-title{
   font-size: 1.75rem;
   padding: 2%;
 }
 
-.cuisine-grid{
-  padding: 5% 10% 0 10%;
+.grid{
+  padding: 2% 10% 0 10%;
   display: grid;
   gap: 1rem;  
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
