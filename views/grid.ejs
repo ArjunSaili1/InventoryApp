@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Ingredient List</title>
+        <title> <%=itemType%> List</title>
         <link rel='stylesheet' href='/stylesheets/style.css' />
       </head>
     <body>
         <%- include('partials/header') %> 
         <div class="content">
-            <h2 class="grid-title">All Ingredients</h2>
+            <h2 class="grid-title">All <%=itemType%>s</h2>
             <div class="grid">
-                <% ingredients.forEach(ingredient => { %>
-                    <a href=<%=ingredient.url%>>
+                <% items.forEach(item => { %>
+                    <a href=<%=item.url%>>
                         <div class="card">
-                            <h3><%= ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1) %></h2>
-                            <img src= '<%-ingredient.image%>'/>
+                            <h3><%= item.name.charAt(0).toUpperCase() + item.name.slice(1) %></h2>
+                            <img src= '<%-item.image%>'/>
                         </div>
                         <% }) %> 
                     </a>

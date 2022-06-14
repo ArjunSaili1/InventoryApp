@@ -4,7 +4,7 @@ const Meal = require('../models/meal')
 module.exports.ingredient_list = async function(req, res, next){
     try{
         const allIngredients = await Ingredient.find({}).exec()
-        res.render('ingredient_list', {ingredients: allIngredients});
+        res.render("grid", {items: allIngredients, itemType: "Ingredient"})
     }catch(err){
         return next(err);
     }

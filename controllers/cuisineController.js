@@ -6,7 +6,7 @@ const { name } = require('ejs')
 module.exports.cuisine_list = async function(req, res, next){
     try{
         const allCuisines = await Cuisine.find({}).exec();
-        res.render('cuisine_list', {cuisines: allCuisines})
+        res.render("grid", {items: allCuisines, itemType: "Cuisine"})
     }catch(err){
         return next(err)
     }
