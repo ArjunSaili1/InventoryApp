@@ -4,6 +4,7 @@
   font-size: 15px;
   --primary: #fb923c;
   --secondary: #f9fafb;
+  --darker-secondary: #f3f4f6;
 }
 
 *{
@@ -13,6 +14,7 @@
 }
 
 a{
+  color: unset;
   text-decoration: none;
   cursor: pointer;
 }
@@ -35,6 +37,7 @@ ul{
 }
 
 header{
+  height: 13vh;
   display: flex;
   background-color: var(--secondary);
   width: 100vw;
@@ -58,6 +61,10 @@ header ul a{
   font-size: 1.1rem;
   padding: 0 10px;
   text-align: center;
+}
+
+.content{
+  min-height: 80vh;
 }
 
 hr{
@@ -106,18 +113,23 @@ footer h6{
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 80vh;
 }
 
 .cuisine-content{
+  background-color: var(--primary);
+  border-radius: 10px;
   width: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2%;
+  padding: 1% 0;
 }
 
 .cuisine-meals{
   align-self: start;
+  padding: 2%;
 }
 
 .cuisine-meals li{
@@ -125,4 +137,37 @@ footer h6{
   margin: 10px 0px;
   cursor: pointer;
   text-decoration: underline;
+}
+
+.card{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--primary);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+  cursor: pointer;
+}
+
+.card img{
+  max-width: 100%;
+  height: 100%;
+}
+
+.card h3{
+  padding: 3%;
+  font-size: 1.5rem;
+}
+
+.cuisine-grid-title{
+  font-size: 1.75rem;
+  padding: 2%;
+}
+
+.cuisine-grid{
+  padding: 5% 10% 0 10%;
+  display: grid;
+  gap: 1rem;  
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
