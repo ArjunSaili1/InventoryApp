@@ -149,6 +149,11 @@ footer h6{
   overflow: hidden;
   height: 100%;
   cursor: pointer;
+  transition: all 0.2s ease-out;
+}
+
+.card:hover{
+  transform: scale(1.05)
 }
 
 .card img{
