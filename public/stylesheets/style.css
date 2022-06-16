@@ -173,8 +173,43 @@ footer h6{
 }
 
 .grid{
-  padding: 2% 10% 0 10%;
+  padding: 2% 10% 10% 10%;
   display: grid;
   gap: 1rem;  
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
+
+.meal-view-ctn{
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+}
+
+.meal-view{
+  padding: 2%;
+  border-radius: 10px;
+  background-color: var(--primary);
+}
+
+.meal-view img{
+  width: 700px;
+}
+
+.meal-view h2{
+  font-size: 1.8rem;
+}
+
+.meal-view h3{
+  font-size: 1.5rem;
+}
+
+.meal-view h4{
+  font-size: 1.25rem;
+}
+
+.meal-ingredient{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
