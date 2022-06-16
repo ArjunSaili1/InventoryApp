@@ -12,18 +12,18 @@ module.exports.meal_list = async function(req, res, next){
 
 module.exports.meal_detail = async function(req, res, next){
     try{
-        let meal_avaliable = true;
         const meal = await Meal.
                             findById(req.params.id).
                             populate('ingredients', ['name', 'in_stock']).
+                            populate('cuisine').
                             exec();
-        console.log(meal.ingredients)
+        meal.available = true;
         meal.ingredients.forEach((ingredient)=>{
             if(!ingredient['in_stock']){
-                meal_avaliable = false;
+                meal.available = false;
             }
         })
-        res.render('meal_detail', {meal: meal, meal_avaliable: meal_avaliable})
+        res.render('meal_detail', {meal: meal})
     }catch(err){
         return next(err)
     }
