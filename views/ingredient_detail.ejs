@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title><%= ingredient.name %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+      </head>
+    <body>
+        <%- include('partials/header') %> 
+        <div class="content">
+            <div class="ingredient-container">
+                <div class="ingredient-detail">
+                    <span class="ingredient-title">
+                        <h2><%=ingredient.name%></h2>
+                        <h3><%= ingredient.in_stock ? 'In Stock' : 'Out of stock'%></h3>
+                    </span>
+                    <img src="<%=ingredient.image%>"/>
+                    <div class="ingredient-meals">
+                        <h3>Meals that use <%=ingredient.name%>:</h3>
+                        <ul>
+                            <% meals.forEach(meal => { %>
+                                <li><a href=<%=meal.url%>><%=meal.name%></a></li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('partials/footer') %> 
+    </body>
+</html>

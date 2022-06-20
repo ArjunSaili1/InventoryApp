@@ -213,3 +213,40 @@ footer h6{
   padding: 10px 0;
 }
 
+.ingredient-container{
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.ingredient-detail{
+  background-color: var(--primary);
+  padding: 10px 0;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.ingredient-detail img{
+  width: 500px;
+}
+
+.ingredient-detail span {
+  padding: 0 10px 10px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ingredient-meals{
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ingredient-meals li{
+  margin: 0 0 5px 10px;
+}
