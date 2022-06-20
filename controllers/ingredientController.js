@@ -21,15 +21,20 @@ module.exports.ingredient_detail = async function(req, res, next){
 }
 
 module.exports.ingredient_create_get = function(req, res, next){
-    res.send("Not Implemented Yet: Create Ingredient Get")
+    res.render('ingredient_form', {title: "Create Ingredient"})
 }
 
 module.exports.ingredient_create_post = function(req, res, next){
     res.send("Not Implemented Yet: Create Ingredient Post")
 }
 
-module.exports.ingredient_update_get = function(req, res, next){
-    res.send("Not Implemented Yet: Update Ingredient ID:" + JSON.stringify(req.params.id))
+module.exports.ingredient_update_get = async function(req, res, next){
+    try{
+        const ingredient = await Ingredient.findById(req.params.id)
+        res.render('ingredient_form', {title: "Update Ingredient", ingredient: ingredient})
+    }catch(err){
+        return next(err)
+    }
 }
 
 module.exports.ingredient_update_post = function(req, res, next){

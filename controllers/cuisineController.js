@@ -23,15 +23,20 @@ module.exports.cuisine_detail = async function(req, res, next){
 }
 
 module.exports.cuisine_create_get = function(req, res, next){
-    res.send("Not Implemented Yet: Create Cuisine Get")
+    res.render('meal_form', {title: "Create Meal"})
 }
 
 module.exports.cuisine_create_post = function(req, res, next){
     res.send("Not Implemented Yet: Create Cuisine Post")
 }
 
-module.exports.cuisine_update_get = function(req, res, next){
-    res.send("Not Implemented Yet: Update Cuisine ID:" + JSON.stringify(req.params.id))
+module.exports.cuisine_update_get = async function(req, res, next){
+    try{
+        const cuisine = await Cuisine.findById(req.params.id);
+        res.render('cuisine_form', {title: "Update Cuisine", cuisine: cuisine})
+    }catch(err){
+        return next(err)
+    }
 }
 
 module.exports.cuisine_update_post = function(req, res, next){
