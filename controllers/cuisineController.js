@@ -23,7 +23,7 @@ module.exports.cuisine_detail = async function(req, res, next){
 }
 
 module.exports.cuisine_create_get = function(req, res, next){
-    res.render('meal_form', {title: "Create Meal"})
+    res.render('cuisine_form', {title: "Create Cuisine"})
 }
 
 module.exports.cuisine_create_post = function(req, res, next){

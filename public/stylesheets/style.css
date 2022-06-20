@@ -28,7 +28,7 @@ a:visited{
   color: unset;
 }
 
-body {
+body, button {
   font-family: "Barlow", Helvetica, Arial, sans-serif;
 }
 
@@ -249,4 +249,16 @@ footer h6{
 
 .ingredient-meals li{
   margin: 0 0 5px 10px;
+}
+
+.grid-header-btns{
+  margin-left: 10%;
+}
+
+.grid-header-btns a{
+  padding: 10px 15px 10px 15px;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 100px;
+  font-weight: bolder;
 }
