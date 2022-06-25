@@ -28,12 +28,17 @@ a:visited{
   color: unset;
 }
 
-body, button, input {
+body, button, input, textarea {
   font-family: "Barlow", Helvetica, Arial, sans-serif;
 }
 
 ul{
   list-style: none;
+}
+
+textarea{
+  padding: 2%;
+  resize: vertical;
 }
 
 header{

@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const upload = require('../utils/multer');
 const cuisine_controller = require('../controllers/cuisineController')
 
 router.get('/', cuisine_controller.cuisine_list)
 
 router.get('/create', cuisine_controller.cuisine_create_get)
 
-router.post('/create', cuisine_controller.cuisine_create_post)
+router.post('/create', upload.single("cuisine_img"), cuisine_controller.cuisine_create_post)
 
 router.get('/:id/update', cuisine_controller.cuisine_update_get)
 

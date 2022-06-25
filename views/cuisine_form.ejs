@@ -7,6 +7,25 @@
     <body>
         <%- include('partials/header') %> 
         <div class="content">
+            <h1><%=title%></h1>
+            <div class="item-form-wrapper">
+                <form class="item-form" action="/cuisine/create" method="post" enctype="multipart/form-data">
+                    <label for="cuisine_name">Cuisine Name</label>
+                    <input id="cuisine_name" name="cuisine_name" placeholder="Indian" type="text" value=<%=title === "Update Cuisine" ? cuisine.name : null%>>
+                    <label for="cuisine_description">Description</label>
+                    <textarea name="cuisine_description" id="cuisine_description" rows="8" placeholder="This cuisine presents magically spices, bold flavours and world of variety!"></textarea>
+                    <label for="cuisine_img"><%= title === "Update Cuisine" ? "Update " : "" %>Cuisine Image</label>
+                    <input type="file" name="cuisine_img" id="cuisine_img"/>
+                    <button type="submit"><%=title.split(' ')[0]%></button>
+                    <% if(typeof errors !== 'undefined') {%>
+                        <% for(let i = 0; i < errors.length; i++){ %>
+                            <ul>
+                                <li class="error"><%=errors[i].msg%></li>
+                            </ul>
+                        <%}%>
+                    <%}%>
+                </form>
+            </div>
         </div>
         <%- include('partials/footer') %> 
     </body>
