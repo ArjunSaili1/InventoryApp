@@ -7,7 +7,7 @@ router.get('/', ingredient_controller.ingredient_list)
 
 router.get('/create', ingredient_controller.ingredient_create_get)
 
-router.post('/create', upload.single("ingredient_img") ,ingredient_controller.ingredient_create_post)
+router.post('/create', upload.single("ingredient_img"), ingredient_controller.ingredient_create_post)
 
 router.get('/:id/update', ingredient_controller.ingredient_update_get)
 
