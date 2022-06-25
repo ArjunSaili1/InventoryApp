@@ -1,5 +1,6 @@
 const Ingredient = require('../models/ingredient')
 const Meal = require('../models/meal')
+const cloudinary = require('../utils/cloudinary');
 
 module.exports.ingredient_list = async function(req, res, next){
     try{
@@ -24,8 +25,22 @@ module.exports.ingredient_create_get = function(req, res, next){
     res.render('ingredient_form', {title: "Create Ingredient"})
 }
 
-module.exports.ingredient_create_post = function(req, res, next){
-    res.send("Not Implemented Yet: Create Ingredient Post")
+module.exports.ingredient_create_post = async function(req, res, next){
+    try{
+        let newIngredient = new Ingredient({
+            name: req.body.ingredient_name, 
+            in_stock: req.body.ingredient_in_stock === "on" ? true : false
+        })
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            resource_type: "image",
+            public_id: `ingredient/${newIngredient._id}`,
+        })
+        newIngredient.image = result.url
+        await newIngredient.save()
+        res.redirect(`/ingredient/${newIngredient._id}`)
+    }catch(err){
+        return next(err)
+    }
 }
 
 module.exports.ingredient_update_get = async function(req, res, next){
