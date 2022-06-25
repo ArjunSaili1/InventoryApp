@@ -10,7 +10,6 @@ if (!userArgs[0].startsWith('mongodb')) {
 }
 */
 require('dotenv').config()
-const async = require('async')
 const Cuisine = require('./models/cuisine')
 const Ingredient = require('./models/ingredient')
 const Meal = require('./models/meal')
@@ -63,7 +62,7 @@ async function ingredientCreate(name, in_stock) {
     var ingredient = new Ingredient({ name: name, in_stock: in_stock });
     const upload = await uploadToCloudinary('ingredient', ingredient);
     ingredient.image = upload.url
-    ingredient.save()
+    await ingredient.save()
     console.log('New Ingredient: ' + ingredient);
     ingredients.push(ingredient)
   }catch(err){
