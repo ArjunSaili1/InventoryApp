@@ -16,7 +16,13 @@
                     <a href=<%=item.url%>>
                         <div class="card">
                             <h3><%= item.name.charAt(0).toUpperCase() + item.name.slice(1) %></h2>
-                            <img src= '<%-item.image%>'/>
+                            <% if(item.image){ %>
+                                <img src= '<%-item.image%>'/>
+                            <% }else{ %>
+                                <div class="grid-default-img">
+                                    <h1>No Image Available</h1>
+                                </div>
+                            <% } %>
                         </div>
                         <% }) %> 
                     </a>

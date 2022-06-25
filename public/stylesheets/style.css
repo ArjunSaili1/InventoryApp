@@ -192,7 +192,8 @@ footer h6{
 }
 
 .meal-view img{
-  width: 700px;
+  width: 500px;
+  height: 500px;
 }
 
 .meal-view h2{
@@ -229,7 +230,8 @@ footer h6{
 }
 
 .ingredient-detail img{
-  width: 500px;
+  width: 400px;
+  height: 400px;
 }
 
 .ingredient-detail span {
@@ -261,4 +263,10 @@ footer h6{
   border: none;
   border-radius: 100px;
   font-weight: bolder;
+}
+
+.default-img{
+  height: 400px;
+  width: 400px;
+  text-align: center;;
 }

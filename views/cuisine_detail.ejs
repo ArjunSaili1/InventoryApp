@@ -11,7 +11,13 @@
                 <div class='cuisine-content'>
                     <h2><%= cuisine.name.charAt(0).toUpperCase() + cuisine.name.slice(1) %> Cuisine</h2>
                     <h5><em><%= cuisine.description %> </em></h5>
-                    <img class='cuisine-image' src=<%=cuisine.image%> alt=""/>
+                    <% if(cuisine.image) {%>
+                        <img class='cuisine-image' src=<%=cuisine.image%> alt=""/>
+                    <%}else{%>
+                        <div class="default-img">
+                            <h1>No Image Available</h1>
+                        </div>
+                    <%}%>
                     <div class='cuisine-meals'> 
                         <h3>Meals</h3>
                         <ul>

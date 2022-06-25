@@ -13,7 +13,11 @@
                         <h2><%=ingredient.name%></h2>
                         <h3><%= ingredient.in_stock ? 'In Stock' : 'Out of stock'%></h3>
                     </span>
-                    <img src="<%=ingredient.image%>"/>
+                    <% if(ingredient.image){ %>
+                        <img src="<%=ingredient.image%>"/>
+                    <% }else{ %>
+                        <div class="default-img"><h1>No Image Available</h1></div>
+                    <% } %>
                     <div class="ingredient-meals">
                         <h3>Meals that use <%=ingredient.name%>:</h3>
                         <ul>

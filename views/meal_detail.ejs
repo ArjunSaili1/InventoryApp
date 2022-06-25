@@ -11,7 +11,13 @@
                 <div class="meal-view">
                     <h2><%= meal.name%></h2>
                     <h4><em><%= meal.cuisine.name.charAt(0).toUpperCase() + meal.cuisine.name.slice(1) %> Cuisine</em></h4>
-                    <img src='<%= meal.image %>'/>
+                    <% if(meal.image){ %>
+                        <img src='<%= meal.image %>'/>
+                    <%}else{%>
+                        <div class="default-img">
+                            <h1>No Image Available</h1>
+                        </div>
+                    <%}%>
                     <h3 style=<%= meal.available ? 'color:green' : 'color:red'%>><%= meal.available ? 'Available' : 'Unavailable'%></h3>
                     <h3>$<%=meal.price%></h3>
                     <h3>Ingredients</h3>

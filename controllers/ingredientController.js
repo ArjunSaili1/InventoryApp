@@ -31,11 +31,13 @@ module.exports.ingredient_create_post = async function(req, res, next){
             name: req.body.ingredient_name, 
             in_stock: req.body.ingredient_in_stock === "on" ? true : false
         })
-        const result = await cloudinary.uploader.upload(req.file.path, {
-            resource_type: "image",
-            public_id: `ingredient/${newIngredient._id}`,
-        })
-        newIngredient.image = result.url
+        if(req.file){
+            const result = await cloudinary.uploader.upload(req.file.path, {
+                resource_type: "image",
+                public_id: `ingredient/${newIngredient._id}`,
+            })
+            newIngredient.image = result.url
+        }
         await newIngredient.save()
         res.redirect(`/ingredient/${newIngredient._id}`)
     }catch(err){
