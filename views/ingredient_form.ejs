@@ -8,15 +8,17 @@
         <%- include('partials/header') %> 
         <h1><%=title%></h1>
         <div class="content">
-            <form action="/ingredient/create" method="post" enctype="multipart/form-data">
-                <label for="ingredient_name">Ingredient Name</label>
-                <input required id="ingredient_name" name="ingredient_name" placeholder="Green Peppers" type="text" value=<%=title === "Update Ingredient" ? ingredient.name : null%>>
-                <label for="ingredient_in_stock">In Stock?</label>
-                <input required for="ingredient_in_stock" name="ingredient_in_stock" type="checkbox" <%= title === "Update Ingredient" && ingredient.in_stock ? "checked" : ""%>/>
-                <label for="ingredient_img"><%= title === "Update Ingredient" ? "Update " : "" %>Ingredient Image</label>
-                <input type="file" name="ingredient_img" id="ingredient_img"/>
-                <button type="submit"><%=title.split(' ')[0]%></button>
-            </form>
+            <div class="item-form-wrapper">
+                <form class="item-form" saction="/ingredient/create" method="post" enctype="multipart/form-data">
+                    <label for="ingredient_name">Ingredient Name</label>
+                    <input required id="ingredient_name" name="ingredient_name" placeholder="Green Peppers" type="text" value=<%=title === "Update Ingredient" ? ingredient.name : null%>>
+                    <label for="ingredient_in_stock">In Stock?</label>
+                    <input required for="ingredient_in_stock" name="ingredient_in_stock" type="checkbox" <%= title === "Update Ingredient" && ingredient.in_stock ? "checked" : ""%>/>
+                    <label for="ingredient_img"><%= title === "Update Ingredient" ? "Update " : "" %>Ingredient Image</label>
+                    <input type="file" name="ingredient_img" id="ingredient_img"/>
+                    <button type="submit"><%=title.split(' ')[0]%></button>
+                </form>
+            </div>
         </div>
         <%- include('partials/footer') %> 
     </body>

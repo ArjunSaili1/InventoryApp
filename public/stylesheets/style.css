@@ -28,7 +28,7 @@ a:visited{
   color: unset;
 }
 
-body, button {
+body, button, input {
   font-family: "Barlow", Helvetica, Arial, sans-serif;
 }
 
@@ -269,4 +269,42 @@ footer h6{
   height: 400px;
   width: 400px;
   text-align: center;;
+}
+
+.item-form-wrapper{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.item-form-wrapper h1{
+  padding-left: 100px;
+}
+
+.item-form{
+  display: flex;
+  padding: 20px;
+  background-color: var(--primary);
+  width: 600px;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+}
+
+.item-form label{
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+
+.item-form input{
+  padding: 1.5%;
+}
+
+.item-form button{
+  width: fit-content;
+  padding: 5px;
+  align-self: flex-end;
+  font-weight: 600;
+  font-size: 1.5rem;
 }
