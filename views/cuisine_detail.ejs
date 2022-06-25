@@ -21,9 +21,13 @@
                     <div class='cuisine-meals'> 
                         <h3>Meals</h3>
                         <ul>
-                            <% cuisineMeals.forEach((meal)=>{ %> 
-                                <li><a href=<%= meal.url %> ><%= meal.name %></a></li>
-                            <% }) %> 
+                            <% if(cuisineMeals.length === 0) { %>
+                                <em>This Cuisine currently has no associated meals</em>
+                            <%}else{%>
+                                <% cuisineMeals.forEach((meal)=>{ %> 
+                                    <li><a href=<%= meal.url %> ><%= meal.name %></a></li>
+                                <% }) %> 
+                            <%}%>
                         </ul>
                     </div>
                 </div>

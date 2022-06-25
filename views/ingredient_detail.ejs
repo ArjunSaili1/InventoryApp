@@ -21,9 +21,13 @@
                     <div class="ingredient-meals">
                         <h3>Meals that use <%=ingredient.name%>:</h3>
                         <ul>
-                            <% meals.forEach(meal => { %>
-                                <li><a href=<%=meal.url%>><%=meal.name%></a></li>
-                            <% }) %>
+                            <% if(meals.length === 0) { %>
+                                <em>This ingredient currently has no associated meals</em>
+                            <%}else{%>
+                                <% meals.forEach(meal => { %>
+                                    <li><a href=<%=meal.url%>><%=meal.name%></a></li>
+                                <% }) %>
+                            <%}%>
                         </ul>
                     </div>
                 </div>
