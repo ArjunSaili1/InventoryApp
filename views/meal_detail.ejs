@@ -14,7 +14,7 @@
                     <img src='<%= meal.image %>'/>
                     <h3 style=<%= meal.available ? 'color:green' : 'color:red'%>><%= meal.available ? 'Available' : 'Unavailable'%></h3>
                     <h3>$<%=meal.price%></h3>
-                    <h3>Ingreidents</h3>
+                    <h3>Ingredients</h3>
                     <div class='meal-ingredients'>
                         <% meal.ingredients.forEach(ingredient =>{%>
                             <a href=<%=ingredient.url%> class="meal-ingredient">
