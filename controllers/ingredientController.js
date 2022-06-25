@@ -30,10 +30,9 @@ module.exports.ingredient_create_post = [
     body("ingredient_name", "Ingredient Name required").trim().isLength({min: 1}).escape(),
     body("ingredient_in_stock", "Ingredient must be in or out of stock").trim().isIn(["on", "off"]).escape(),
     async function(req, res, next){
-        const errors = validationResult(req);
-        if(!errors.isEmpty()){
-            console.log(errors)
-            res.render("ingredient_form", {title: "Create Ingredient", errors: errors["errors"]});
+        const validation = validationResult(req);
+        if(!validation.isEmpty()){
+            res.render("ingredient_form", {title: "Create Ingredient", errors: validation["errors"]});
             return;
         }
         try{
