@@ -6,8 +6,46 @@
       </head>
     <body>
         <%- include('partials/header') %> 
+        <h1><%=title%></h1>
         <div class="content">
-        </div>
+            <div class="item-form-wrapper">
+                <form class="item-form" action="/meal/create" method="post" enctype="multipart/form-data">
+                    <label for="meal_name">Meal Name</label>
+                    <input id="meal_name" name="meal_name" placeholder="Lasagna" type="text" value=<%=title === "Update Meal" ? meal.name : null%>>
+                    <label for="meal_price">Meal Price</label>
+                    <input type="number" step="any" min="1" id="meal_price" name="meal_price" placeholder="11.99">
+                    <label for="meal_description">Description</label>
+                    <textarea name="meal_description" id="meal_description" rows="8" placeholder="Garfield's favourite dish!"></textarea>
+                    <fieldset>
+                        <legend>Select a cuisine</legend>
+                        <% cuisines.forEach((cuisine)=>{%>
+                        <span>
+                            <input type="radio" name="cuisine" value=<%=cuisine.name%> id=<%=cuisine.name%>/>
+                            <label for=<%=cuisine.name%>><%=cuisine.name.charAt(0).toUpperCase() + cuisine.name.slice(1)%></label>
+                        </span>
+                        <%})%>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Select your ingredients</legend>
+                        <% ingredients.forEach((ingredient)=>{%>
+                        <span>
+                            <input type="checkbox" name="ingredients" value=<%=ingredient.name%> id=<%=ingredient.name%>/>
+                            <label for=<%=ingredient.name%>><%=ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1)%></label>
+                        </span>
+                        <%})%>
+                    </fieldset>
+                    <label for="meal_img"><%= title === "Update Meal" ? "Update " : "" %>Meal Image</label>
+                    <input type="file" name="meal_img" id="meal_img"/>
+                    <button type="submit"><%=title.split(' ')[0]%></button>
+                    <% if(typeof errors !== 'undefined') {%>
+                        <% for(let i = 0; i < errors.length; i++){ %>
+                            <ul>
+                                <li class="error"><%=errors[i].msg%></li>
+                            </ul>
+                        <%}%>
+                    <%}%>
+                </form>
+            </div>
         <%- include('partials/footer') %> 
     </body>
 </html>

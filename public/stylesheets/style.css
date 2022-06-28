@@ -1,47 +1,50 @@
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-:root{
+:root {
   font-size: 15px;
   --primary: #fb923c;
   --secondary: #f9fafb;
   --darker-secondary: #f3f4f6;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-a{
+a {
   color: unset;
   text-decoration: none;
   cursor: pointer;
 }
 
-a *{
+a * {
   cursor: pointer;
 }
 
-a:visited{
+a:visited {
   cursor: pointer;
   color: unset;
 }
 
-body, button, input, textarea {
+body,
+button,
+input,
+textarea {
   font-family: "Barlow", Helvetica, Arial, sans-serif;
 }
 
-ul{
+ul {
   list-style: none;
 }
 
-textarea{
+textarea {
   padding: 2%;
   resize: vertical;
 }
 
-header{
+header {
   height: 13vh;
   display: flex;
   background-color: var(--secondary);
@@ -51,32 +54,32 @@ header{
   align-items: center;
 }
 
-header h1{
+header h1 {
   color: var(--primary);
   font-size: 2.2rem;
 }
 
-header ul{
+header ul {
   display: flex;
   width: 60%;
   justify-content: space-between;
 }
 
-header ul a{
+header ul a {
   font-size: 1.1rem;
   padding: 0 10px;
   text-align: center;
 }
 
-.content{
+.content {
   min-height: 80vh;
 }
 
-hr{
+hr {
   border: 0.5px solid white;
 }
 
-footer{
+footer {
   background-color: var(--primary);
   width: 100vw;
   display: flex;
@@ -84,37 +87,36 @@ footer{
   padding: 20px 10%;
 }
 
-footer ul{
+footer ul {
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 15px 0 0 2%;
 }
 
-footer img{
+footer img {
   width: 3rem;
 }
 
-footer h6{
+footer h6 {
   text-align: center;
   font-weight: 400;
 }
 
-.footer-headings{
+.footer-headings {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-bottom: 15px;
 }
 
-.cuisine-image{
+.cuisine-image {
   max-width: 500px;
   margin: 2%;
   height: auto;
-
 }
 
-.cuisine-content-wrapper{
+.cuisine-content-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -123,7 +125,7 @@ footer h6{
   margin: 3% 0;
 }
 
-.cuisine-content{
+.cuisine-content {
   background-color: var(--primary);
   border-radius: 10px;
   width: fit-content;
@@ -133,19 +135,19 @@ footer h6{
   padding: 1% 0;
 }
 
-.cuisine-meals{
+.cuisine-meals {
   align-self: start;
   padding: 2%;
 }
 
-.cuisine-meals li{
+.cuisine-meals li {
   padding-left: 20px;
   margin: 10px 0px;
   cursor: pointer;
   text-decoration: underline;
 }
 
-.card{
+.card {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -157,69 +159,69 @@ footer h6{
   transition: all 0.2s ease-out;
 }
 
-.card:hover{
-  transform: scale(1.05)
+.card:hover {
+  transform: scale(1.05);
 }
 
-.card img{
+.card img {
   max-width: 100%;
   height: 100%;
 }
 
-.card h3{
+.card h3 {
   padding: 3%;
   text-align: center;
   font-size: 1.5rem;
 }
 
-.grid-title{
+.grid-title {
   font-size: 1.75rem;
   padding: 2%;
 }
 
-.grid{
+.grid {
   padding: 2% 10% 10% 10%;
   display: grid;
-  gap: 1rem;  
+  gap: 1rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
 }
 
-.meal-view-ctn{
+.meal-view-ctn {
   padding: 2%;
   display: flex;
   justify-content: center;
 }
 
-.meal-view{
+.meal-view {
   padding: 2%;
   border-radius: 10px;
   background-color: var(--primary);
 }
 
-.meal-view img{
+.meal-view img {
   width: 500px;
   height: 500px;
 }
 
-.meal-view h2{
+.meal-view h2 {
   font-size: 1.8rem;
 }
 
-.meal-view h3{
+.meal-view h3 {
   font-size: 1.5rem;
 }
 
-.meal-view h4{
+.meal-view h4 {
   font-size: 1.25rem;
 }
 
-.meal-ingredient{
+.meal-ingredient {
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
 }
 
-.ingredient-container{
+.ingredient-container {
   height: 80vh;
   display: flex;
   justify-content: center;
@@ -227,14 +229,14 @@ footer h6{
   flex-direction: column;
 }
 
-.ingredient-detail{
+.ingredient-detail {
   background-color: var(--primary);
   padding: 10px 0;
   border-radius: 10px;
   border: 1px solid black;
 }
 
-.ingredient-detail img{
+.ingredient-detail img {
   width: 400px;
   height: 400px;
 }
@@ -246,7 +248,7 @@ footer h6{
   justify-content: space-between;
 }
 
-.ingredient-meals{
+.ingredient-meals {
   width: 100%;
   padding: 10px;
   display: flex;
@@ -254,15 +256,15 @@ footer h6{
   gap: 5px;
 }
 
-.ingredient-meals li{
+.ingredient-meals li {
   margin: 0 0 5px 10px;
 }
 
-.grid-header-btns{
+.grid-header-btns {
   margin-left: 10%;
 }
 
-.grid-header-btns a{
+.grid-header-btns a {
   padding: 10px 15px 10px 15px;
   background-color: var(--primary);
   border: none;
@@ -270,24 +272,25 @@ footer h6{
   font-weight: bolder;
 }
 
-.default-img{
+.default-img {
   height: 400px;
   width: 400px;
-  text-align: center;;
+  text-align: center;
 }
 
-.item-form-wrapper{
+.item-form-wrapper {
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
+  padding: 2% 5% 5% 5%;
 }
 
-.item-form-wrapper h1{
+.item-form-wrapper h1 {
   padding-left: 100px;
 }
 
-.item-form{
+.item-form {
   display: flex;
   padding: 20px;
   background-color: var(--primary);
@@ -297,19 +300,26 @@ footer h6{
   border-radius: 10px;
 }
 
-.item-form label{
+.item-form label {
   font-weight: 500;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 
-.item-form input{
+.item-form input {
   padding: 1.5%;
 }
 
-.item-form button{
+.item-form button {
   width: fit-content;
   padding: 5px;
   align-self: flex-end;
   font-weight: 600;
   font-size: 1.5rem;
+}
+
+fieldset {
+  padding: 3%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
 }
