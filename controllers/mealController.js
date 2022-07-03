@@ -119,14 +119,20 @@ module.exports.meal_update_post = function (req, res, next) {
   );
 };
 
-module.exports.meal_delete_get = function (req, res, next) {
-  res.send(
-    "Not Implemented Yet: Get Delete Meal ID:" + JSON.stringify(req.params.id)
-  );
+module.exports.meal_delete_get = async function (req, res, next) {
+  try {
+    const meal = await Meal.findById(req.params.id);
+    res.render("delete_meal", { meal, deleteLink: req.originalUrl });
+  } catch (err) {
+    return next(err);
+  }
 };
 
-module.exports.meal_delete_post = function (req, res, next) {
-  res.send(
-    "Not Implemented Yet: Post Delete Meal ID:" + JSON.stringify(req.params.id)
-  );
+module.exports.meal_delete_post = async function (req, res, next) {
+  try {
+    await Meal.deleteOne({ _id: req.params.id });
+    res.redirect("/meal");
+  } catch (err) {
+    return next(err);
+  }
 };

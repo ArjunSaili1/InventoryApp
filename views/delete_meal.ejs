@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Delete Ingredient</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="delete-container">
+      <h2>
+        Are you sure you want to delete <%= meal.name %> from your
+        meal list?
+      </h2>
+      <form method="POST" action=<% deleteLink %>>
+        <button>Delete</button>
+      </form>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>
