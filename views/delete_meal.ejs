@@ -7,13 +7,16 @@
   <body>
     <%- include('partials/header') %>
     <div class="delete-container">
-      <h2>
-        Are you sure you want to delete <%= meal.name %> from your
-        meal list?
-      </h2>
-      <form method="POST" action=<% deleteLink %>>
-        <button>Delete</button>
-      </form>
+      <div class="delete-content">
+        <h2>
+          Are you sure you want to delete <%= meal.name %> from your
+          meal list?
+        </h2>
+        <form method="POST" action=<% deleteLink %>>
+          <button>Delete</button>
+          <a href="/meal">Cancel</a>
+        </form>
+      </div>
     </div>
     <%- include('partials/footer') %>
   </body>

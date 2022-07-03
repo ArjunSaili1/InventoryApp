@@ -8,18 +8,25 @@
     <%- include('partials/header') %>
     <div class="delete-container">
       <% if(ingredientMeals.length === 0){%>
-      <h2>
-        Are you sure you want to delete <%= ingredient.name %> from your
-        ingredient list?
-      </h2>
-      <form method="POST" action=<% deleteLink %>>
-        <button>Delete</button>
-      </form>
+        <div class="delete-content">
+          <h2>
+            Are you sure you want to delete <%= ingredient.name %> from your
+            ingredient list?
+          </h2>
+          <form method="POST" action=<% deleteLink %>>
+            <button>Delete</button>
+            <a href="/ingredient">Cancel</a>
+          </form>
+        </div>
       <%}else{%>
-        <h2>You must delete the following meals first:</h2>
-        <% ingredientMeals.forEach(meal => { %>
-            <li><a href=<%=meal.url%>><%=meal.name%></a></li>
-        <% }) %>
+        <div class="delete-content">
+          <h2>You must delete the following meals first:</h2>
+          <ul>
+            <% ingredientMeals.forEach(meal => { %>
+              <li><a href=<%=meal.url%>><%=meal.name%></a></li>
+          <% }) %>
+          </ul>
+        </div>
     <%}%>
     </div>
     <%- include('partials/footer') %>
