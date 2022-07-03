@@ -363,3 +363,8 @@ fieldset {
   font-weight: bold;
   font-size: 1.25rem;
 }
+
+.form-title{
+  margin-left: 12%;
+  padding-top: 2%;
+}
