@@ -15,7 +15,7 @@ router.post('/:id/update', cuisine_controller.cuisine_update_post)
 
 router.get('/:id/delete', cuisine_controller.cuisine_delete_get)
 
-router.get('/:id/delete', cuisine_controller.cuisine_delete_post)
+router.post('/:id/delete', cuisine_controller.cuisine_delete_post)
 
 router.get('/:id', cuisine_controller.cuisine_detail)
 
