@@ -93,10 +93,9 @@ module.exports.ingredient_delete_get = async function (req, res, next) {
     const ingredientMeals = await Meal.find({
       ingredients: { $all: [req.params.id] },
     });
-    let deleteLink = ingredient.url + "/delete";
     res.render("delete_ingredient", {
       ingredient,
-      deleteLink,
+      deleteLink: req.originalUrl,
       ingredientMeals,
     });
   } catch (err) {
