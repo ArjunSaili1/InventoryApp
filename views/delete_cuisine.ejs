@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Delete Ingredient</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <%- include('partials/header') %>
+    <div class="delete-container">
+      <% if(cuisineMeals.length === 0){%>
+      <h2>
+        Are you sure you want to delete <%= cuisine.name %> from your
+        cuisine list?
+      </h2>
+      <form method="POST" action=<% deleteLink %>>
+        <button>Delete</button>
+      </form>
+      <%}else{%>
+        <h2>You must delete the following meals first:</h2>
+        <% cuisineMeals.forEach(meal => { %>
+            <li><a href=<%=meal.url%>><%=meal.name%></a></li>
+        <% }) %>
+    <%}%>
+    </div>
+    <%- include('partials/footer') %>
+  </body>
+</html>

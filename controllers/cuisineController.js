@@ -68,10 +68,35 @@ module.exports.cuisine_update_post = function(req, res, next){
     res.send("Not Implemented Yet: Update Cuisine ID:" + JSON.stringify(req.params.id))
 }
 
-module.exports.cuisine_delete_get = function(req, res, next){
-    res.send("Not Implemented Yet: Get Delete Cuisine ID:" + JSON.stringify(req.params.id))
+module.exports.cuisine_delete_get = async function(req, res, next){
+    try {
+        const cuisine = await Cuisine.findById(req.params.id);
+        const cuisineMeals = await Meal.find({
+          cuisine: req.params.id,
+        });
+        res.render("delete_cuisine", {
+          cuisine,
+          deleteLink: req.originalUrl,
+          cuisineMeals,
+        });
+      } catch (err) {
+        return next(err);
+      }
 }
 
-module.exports.cuisine_delete_post = function(req, res, next){
-    res.send("Not Implemented Yet: Post Delete Cuisine ID:" + JSON.stringify(req.params.id))
+module.exports.cuisine_delete_post = async function(req, res, next){
+    try {
+        const cuisineMeals = await Meal.find({
+          cuisine: req.params.id,
+        });
+        if(cuisineMeals.length === 0){
+          await Cuisine.deleteOne({ _id: req.params.id });
+          res.redirect("/cuisine");
+        }
+        else{
+          res.redirect(`/cuisine/${req.params.id}`)
+        }
+      } catch (err) {
+        return next(err);
+      }
 }
