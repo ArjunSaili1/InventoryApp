@@ -87,16 +87,36 @@ module.exports.ingredient_update_post = function (req, res, next) {
   );
 };
 
-module.exports.ingredient_delete_get = function (req, res, next) {
-  res.send(
-    "Not Implemented Yet: Get Delete Ingredient ID:" +
-      JSON.stringify(req.params.id)
-  );
+module.exports.ingredient_delete_get = async function (req, res, next) {
+  try {
+    const ingredient = await Ingredient.findById(req.params.id);
+    const ingredientMeals = await Meal.find({
+      ingredients: { $all: [req.params.id] },
+    });
+    let deleteLink = ingredient.url + "/delete";
+    res.render("delete_ingredient", {
+      ingredient,
+      deleteLink,
+      ingredientMeals,
+    });
+  } catch (err) {
+    return next(err);
+  }
 };
 
-module.exports.ingredient_delete_post = function (req, res, next) {
-  res.send(
-    "Not Implemented Yet: Post Delete Ingredient ID:" +
-      JSON.stringify(req.params.id)
-  );
+module.exports.ingredient_delete_post = async function (req, res, next) {
+  try {
+    const ingredientMeals = await Meal.find({
+      ingredients: { $all: [req.params.id] },
+    });
+    if(ingredientMeals.length === 0){
+      await Ingredient.deleteOne({ _id: req.params.id });
+      res.redirect("/ingredient");
+    }
+    else{
+      res.redirect(`/ingredient/${req.params.id}`)
+    }
+  } catch (err) {
+    return next(err);
+  }
 };

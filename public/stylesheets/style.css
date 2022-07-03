@@ -323,3 +323,7 @@ fieldset {
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 10px;
 }
+
+#ingredient_in_stock {
+  width: fit-content;
+}
