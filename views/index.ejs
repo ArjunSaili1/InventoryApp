@@ -1,11 +1,33 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>MealBook</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <%- include('partials/header') %> 
-    <%- include('partials/footer') %> 
+    <%- include('partials/header') %>
+    <div class="content">
+      <div class="homepage-content">
+        <h1>Welcome to Meal Book!</h1>
+        <a href="./cuisine">
+          <div class="homepage-grid">
+            <div class="card">
+              <h3>Browse Cuisines</h3>
+            </div>
+        </a>
+          <a href="./meal">
+            <div class="card">
+              <h3>Browse Meals</h3>
+            </div>
+          </a>
+          <a href="./ingredient">
+            <div class="card">
+              <h3>Browse Ingredients</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <%- include('partials/footer') %>
   </body>
 </html>
