@@ -15,7 +15,11 @@ router.post(
 
 router.get("/:id/update", meal_controller.meal_update_get);
 
-router.post("/:id/update", meal_controller.meal_update_post);
+router.post(
+  "/:id/update",
+  upload.single("meal_img"),
+  meal_controller.meal_update_post
+);
 
 router.get("/:id/delete", meal_controller.meal_delete_get);
 

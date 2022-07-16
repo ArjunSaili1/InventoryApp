@@ -61,10 +61,8 @@ module.exports.meal_create_post = [
     .isNumeric()
     .escape(),
   async function (req, res, next) {
-    console.log("ran");
     const validation = validationResult(req);
     if (!validation.isEmpty()) {
-      console.log(validation);
       const ingredients = await Ingredient.find({});
       const cuisines = await Cuisine.find({});
       res.render("meal_form", {
@@ -106,18 +104,89 @@ module.exports.meal_create_post = [
 
 module.exports.meal_update_get = async function (req, res, next) {
   try {
-    const meal = await Meal.findById(req.params.id);
-    res.render("meal_form", { title: "Update Meal", meal: meal });
+    const meal = await Meal.findById(req.params.id)
+      .populate("ingredients", ["name", "in_stock"])
+      .populate("cuisine");
+    const cuisines = await Cuisine.find({});
+    const ingredients = await Ingredient.find({});
+    let checkedIngredients = [];
+    meal.ingredients.forEach((ingr) => {
+      checkedIngredients.push(ingr.name);
+    });
+    res.render("meal_form", {
+      title: "Update Meal",
+      meal,
+      cuisines,
+      checkedIngredients,
+      ingredients,
+    });
   } catch (err) {
     return next(err);
   }
 };
 
-module.exports.meal_update_post = function (req, res, next) {
-  res.send(
-    "Not Implemented Yet: Update Meal ID:" + JSON.stringify(req.params.id)
-  );
-};
+module.exports.meal_update_post = [
+  async function (req, res, next) {
+    console.log("tewtet", req.param["ingredients"]);
+    const meal = await Meal.findById(req.params.id)
+      .populate("ingredients", ["name", "in_stock"])
+      .populate("cuisine");
+    const cuisines = await Cuisine.find({});
+    const ingredients = await Ingredient.find({});
+    console.log(req.body.ingredients);
+    let ingreidentsInDB = await Ingredient.find(
+      {
+        name: { $in: req.body.ingredients },
+      },
+      "_id"
+    );
+    let checkedIngredients = [];
+    meal.ingredients.forEach((ingr) => {
+      checkedIngredients.push(ingr.name);
+    });
+    const validation = validationResult(req);
+    if (!validation.isEmpty()) {
+      res.render("meal_form", {
+        title: "Update Meal",
+        cuisines,
+        ingredients,
+        checkedIngredients,
+        errors: validation["errors"],
+      });
+      return;
+    }
+    try {
+      if (meal.name !== req.body.meal_name) {
+        meal.name = req.body.meal_name;
+      }
+      if (meal.description !== req.body.meal_description) {
+        meal.description = req.body.meal_description;
+      }
+      if (meal.price !== req.body.meal_price) {
+        meal.price = req.body.meal_price;
+      }
+      if (meal.cuisine.name !== req.body.cuisine) {
+        const newCuisine = await Cuisine.find({ name: req.body.cuisine });
+        meal.cuisine = newCuisine[0]._id;
+      }
+      meal.ingredients = [];
+      for (let i = 0; i < ingreidentsInDB.length; i++) {
+        meal.ingredients.push(ingreidentsInDB[i]);
+      }
+      if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path, {
+          resource_type: "image",
+          public_id: `meal/${meal._id}`,
+        });
+        meal.image = result.url;
+      }
+      await meal.save();
+      res.redirect(meal.url);
+    } catch (err) {
+      return next(err);
+    }
+  },
+];
 
 module.exports.meal_delete_get = async function (req, res, next) {
   try {

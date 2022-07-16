@@ -9,27 +9,63 @@
         <h1 class="form-title"><%=title%></h1>
         <div class="content">
             <div class="item-form-wrapper">
-                <form class="item-form" action="/meal/create" method="post" enctype="multipart/form-data">
+                <form 
+                class="item-form" 
+                action=<%= title === "Update Meal" ?  "./update" : "./create" %> 
+                method="post" 
+                enctype="multipart/form-data">
                     <label for="meal_name">Meal Name</label>
-                    <input id="meal_name" name="meal_name" placeholder="Lasagna" type="text" value=<%=title === "Update Meal" ? meal.name : null%>>
+                    <input 
+                    id="meal_name" 
+                    name="meal_name" 
+                    placeholder="Lasagna" 
+                    ype="text" 
+                    value="<%= title==='Update Meal' ? meal.name : null %>""
+                    >
                     <label for="meal_price">Meal Price</label>
-                    <input type="number" step="any" min="1" id="meal_price" name="meal_price" placeholder="11.99">
+                    <input 
+                    type="number" 
+                    step="any" 
+                    min="1" 
+                    id="meal_price" 
+                    name="meal_price" 
+                    value="<%= title==='Update Meal' ? meal.price : null %>""
+                    placeholder="11.99">
                     <label for="meal_description">Description</label>
-                    <textarea name="meal_description" id="meal_description" rows="8" placeholder="Garfield's favourite dish!"></textarea>
+                    <textarea 
+                    name="meal_description" 
+                    id="meal_description" 
+                    rows="8" 
+                    placeholder="Garfield's favourite dish!"
+                    ><%= title==='Update Meal' ? meal.name : null %></textarea>
                     <fieldset>
                         <legend>Select a cuisine</legend>
-                        <% cuisines.forEach((cuisine)=>{%>
+                        <% cuisines.forEach((cuisineX)=>{%>
+                        <% let checked = '' %>
+                        <% if(title === "Update Meal"){checked = cuisineX.name == meal.cuisine.name ? 'checked' : ''}%>
                         <span>
-                            <input type="radio" name="cuisine" value=<%=cuisine.name%> id=<%=cuisine.name%>/>
-                            <label for=<%=cuisine.name%>><%=cuisine.name.charAt(0).toUpperCase() + cuisine.name.slice(1)%></label>
+                            <input
+                            <%= checked %>
+                            type="radio" 
+                            name="cuisine" 
+                            value=<%=cuisineX.name%> id=<%=cuisineX.name%>/>
+                            <label 
+                            for=<%=cuisineX.name%>><%=cuisineX.name.charAt(0).toUpperCase() + cuisineX.name.slice(1)%></label>
                         </span>
                         <%})%>
                     </fieldset>
                     <fieldset>
                         <legend>Select your ingredients</legend>
-                        <% ingredients.forEach((ingredient)=>{%>
+                        <% ingredients.forEach((ingredient, index)=>{%>
+                        <% let ingrChecked = '' %>
+                        <% if(title === "Update Meal") {ingrChecked = checkedIngredients.includes(ingredient.name) ? 'checked' : '' }%>
                         <span>
-                            <input type="checkbox" name="ingredients" value=<%=ingredient.name%> id=<%=ingredient.name%>/>
+                            <input 
+                            <%= ingrChecked %>
+                            type="checkbox" 
+                            name="ingredients[<%= index %>]" 
+                            value=<%=ingredient.name%> 
+                            id=<%=ingredient.name%>/>
                             <label for=<%=ingredient.name%>><%=ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1)%></label>
                         </span>
                         <%})%>
